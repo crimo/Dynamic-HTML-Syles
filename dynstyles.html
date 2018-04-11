@@ -1,0 +1,70 @@
+<html>
+<!--
+  Chris Moore
+  Dynamic Section Formatting - dynstyles.html
+  This document demonstrates the use of Javascript to change 
+  various CSS properties such as changing border color, font size,
+  color, and weight, background color, and visibility-->
+
+<head><title>Dynamic Section Formatting</title>
+<script type = "text/javascript">
+  //Each function changes one CSS property
+  function changeBorder (newBorder){
+    document.getElementById("outputBox").style.borderColor = newBorder;}
+  function changeTxtColor (newTextColor){
+    document.getElementById("outputBox").style.color = newTextColor;}
+  function changeBGColor (newBG) {
+    document.getElementById("outputBox").style.backgroundColor = newBG;}
+  function changeFontSize (newSize) {
+    document.getElementById("outputBox").style.fontSize = newSize;}
+  function changeFontWeight (newWeight) {
+    if (newWeight == "normal")	  
+    document.getElementById("outputBox").style.fontWeight = 'normal';
+    else
+    document.getElementById("outputBox").style.fontWeight = 'bold';
+  }
+  function changeVisibility(){
+    if (document.getElementById("outputBox").style.visibility == "visible"
+    	    ||document.getElementById("outputBox").style.visibility == "")	  
+    document.getElementById("outputBox").style.visibility = "hidden";
+    else
+    document.getElementById("outputBox").style.visibility = "visible";
+  }
+</script>
+
+<style type = "text/css">
+  div.output  {border-color: red;
+               border-style: solid;
+      	       border-width: 10px;
+               padding: 10px;
+               background-color: lightgray;
+               }
+</style>
+</head>
+
+<!-- Each table section contains either a description of the changed property, 
+or a textfield/button that call a Javascript function when necessary-->
+<body><h1>Dynamic Section Formatting</h1>
+<table border = "border">
+<tr><td>Border Color:</td>
+  <td><input type ="text" size = 10 onchange="changeBorder(this.value)"></td></tr>
+<tr><td>Text Color:</td>
+  <td><input type ="text" size = 10 onchange="changeTxtColor(this.value)"></td></tr>
+<tr><td>Background Color:</td>
+  <td><input type ="text" size = 10 onchange="changeBGColor(this.value)"></td></tr>
+<tr><td>Font Size:</td>
+  <td><input type ="text" size = 10 onchange="changeFontSize(this.value)"></td></tr>
+<tr><td>Font weight:</td>
+  <td><input type="radio" name="weight" value="normal" onclick="changeFontWeight(this.value)">Normal
+  <br/><input type="radio" name ="weight" value="bold" onclick="changeFontWeight(this.value)">Bold</td></tr>
+<tr><td>Change Visibility:</td>
+  <td><input type = "button" value="Change Visibility" onclick="changeVisibility()"</td></tr>
+</table><br/>
+
+<!-- This is the bordered section that recieves the style changes -->
+<div class = "output" id = "outputBox">
+<h3>ITEC 225</h3><p>Web Programming I, the main topics are HTML, CSS, Javascript,
+and an introduction to PHP.</p>
+</div>
+</body>
+</html>
